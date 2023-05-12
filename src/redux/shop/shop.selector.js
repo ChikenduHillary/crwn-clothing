@@ -7,7 +7,6 @@ export const selectCollections = createSelector(
     shop => shop.collections
 );
 
-
 export const selectCollectionForPreview = createSelector(
     [selectCollections],
     collections => collections ? Object.keys(collections).map(key => collections[key]) : []
@@ -18,6 +17,7 @@ export const selectCollection = collectionUrlParam =>
         [selectCollections],
         collections => collections ? collections[collectionUrlParam] : null
     )
+
 export const selectIsCollectionLoaded = createSelector(
     [selectShop],
     shop => Boolean(shop.collections)
