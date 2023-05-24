@@ -23,7 +23,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <CheckoutPage />
+        <GlobalStyle />
         <Header />
           <Switch>
             <Route exact path='/' component={HomePage} />

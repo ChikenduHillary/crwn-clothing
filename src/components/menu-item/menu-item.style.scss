@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .menu-item {
     min-width: 30%;
     height: 240px;
@@ -12,18 +16,22 @@
     &:hover {
       cursor: pointer;
     
-      & .background-image {
+      &.background-image {
         transform: scale(1.1);
         transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
       }
     
-      & .content {
+      &.content {
         opacity: 0.9;
       }
     }
   
     &.large {
       height: 380px;
+
+      @media screen and (max-width: 800px) {
+        height: 200px;
+      }
     }
 
     &:first-child {
@@ -32,6 +40,10 @@
   
     &:last-child {
       margin-left: 7.5px;
+    }
+
+    @media screen and (max-width: 800px) {
+      height: 200px;
     }
 
     .background-image {
@@ -65,5 +77,10 @@
         font-weight: lighter;
         font-size: 16px;
       }
+    }
+    
+    @media screen and (max-width: 400px) {
+      height: 200px;
+      width: 70%
     }
   }

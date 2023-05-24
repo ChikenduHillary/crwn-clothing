@@ -14,9 +14,10 @@ export function* getSnapshotFromUserAuth(userAuth) {
 }
 
 export function* signInWithGoogle() {
+    console.log('signInWithGoogle is called')
     try {
         const { user } = yield auth.signInWithPopup(googleProvider);
-        getSnapshotFromUserAuth(user)
+        yield getSnapshotFromUserAuth(user)
     } catch (error) {
         yield put(signInFailure(error));
     }
@@ -26,7 +27,7 @@ export function* signInWithGoogle() {
 export function* signInWithEmail({payload: {email, password}}) {
     try {
         const { user } = yield auth.signInWithEmailAndPassword(email, password);
-        getSnapshotFromUserAuth(user)
+        yield getSnapshotFromUserAuth(user)
     } catch (error) {
         yield put(signInFailure(error));
     }
@@ -68,25 +69,26 @@ export function* signUp({payload: {displayName, email, password, confirmPassword
 }
 
 export function* onGoogleSignInStart() {
-    yield takeLatest(call(userActionTypes.GOOGLE_SIGN_IN_START, signInWithGoogle));
+
+    yield takeLatest(userActionTypes.GOOGLE_SIGN_IN_START, signInWithGoogle);
 };
 
 export function* onEmailSignInStart() {
-    yield takeLatest(call(userActionTypes.EMAIL_SIGN_IN_START, signInWithEmail));
+    yield takeLatest(userActionTypes.EMAIL_SIGN_IN_START, signInWithEmail);
 };
 
 export function* onCheckUserSession() {
-    yield takeLatest(call(userActionTypes.CHECK_USER_SESSION, isUserAuthenticated));
+    yield takeLatest(userActionTypes.CHECK_USER_SESSION, isUserAuthenticated);
 };
 
 export function* onSignOut() {
-    yield takeLatest(call(userActionTypes.SIGN_OUT_START, signOut))
+    yield takeLatest(userActionTypes.SIGN_OUT_START, signOut)
 };
 
-export function*  onSignUp() {
-    yield takeLatest(call(userActionTypes.SIGN_UP_START, signUp))
+export function* onSignUp() {
+    yield takeLatest(userActionTypes.SIGN_UP_START, signUp)
 }
 
 export function* userSagas() {
-    yield all([call(onGoogleSignInStart), call(onEmailSignInStart), call(onCheckUserSession), call(onSignOut)]);
+    yield all([call(onSignUp), call(onGoogleSignInStart), call(onEmailSignInStart), call(onCheckUserSession), call(onSignOut)]);
 }
