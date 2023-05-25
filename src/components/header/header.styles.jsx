@@ -12,6 +12,7 @@ export const HeaderContainer = styled.div`
         height: 60px;
         padding: 10px;
         margin-buttom: 20px;
+        font-size: .75em;
     }
 `
 
