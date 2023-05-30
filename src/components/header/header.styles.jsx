@@ -10,6 +10,7 @@ export const HeaderContainer = styled.div`
 
     @media screen and (max-width: 800px) {
         height: 60px;
+        width: 100vw;
         padding: 10px;
         margin-buttom: 20px;
         font-size: .75em;

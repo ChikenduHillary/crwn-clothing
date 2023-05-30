@@ -14,7 +14,6 @@ export function* getSnapshotFromUserAuth(userAuth) {
 }
 
 export function* signInWithGoogle() {
-    console.log('signInWithGoogle is called')
     try {
         const { user } = yield auth.signInWithPopup(googleProvider);
         yield getSnapshotFromUserAuth(user)

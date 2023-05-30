@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
@@ -82,6 +83,7 @@ class SignUp extends React.Component {
                     />
                     <CustomButton type='submit'>Sign Up</CustomButton>
                 </form>
+                <p>Already have an account? <Link to='/signin'><i className='link'>Sign In</i></Link></p>
             </div>
         )
     }
